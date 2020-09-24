@@ -1,9 +1,9 @@
 package main
 
 import (
-	"../tldr-plugin"
-	"../word-counter-plugin"
-	"../xp-plugin"
+	"plugin/tldr-plugin"
+	"plugin/word-counter-plugin"
+	"plugin/xp-plugin"
 	"fmt"
 	"github.com/wechaty/go-wechaty/wechaty"
 	"github.com/wechaty/go-wechaty/wechaty-puppet/schemas"
