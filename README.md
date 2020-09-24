@@ -29,31 +29,30 @@ go run word_counter/word.go
 
 ```go
 var bot = wechaty.NewWechaty()
+wordCounterPlugin := word_counter_plugin.New()
+tldrPlugin := tldr_plugin.New("太长不看")
+xpPlugin := xp_plugin.New()
 
-	wordCounterPlugin := word_counter_plugin.NewWordCounterPlugin()
-	tldrPlugin := tldr_plugin.NewTLDRPlugin("太长不看")
-	xpPlugin := xp_plugin.NewXPPlugin()
+var counter int = 0
 
-	var counter int = 0
+bot.OnMessage(func(ctx *wechaty.Context, message *user.Message) {
+    // control plugins
+    if strings.Contains(message.Text(), "通知") {
+        ctx.DisableOnce(tldrPlugin)
+        counter++
+    }
 
-	bot.OnMessage(func(ctx *wechaty.Context, message *user.Message) {
-		// control plugins
-		if strings.Contains(message.Text(), "通知") {
-			ctx.DisableOnce(tldrPlugin)
-			counter++
-		}
+    if counter == 3{
+        tldrPlugin.SetEnable(false)
+    }
+})
 
-		if counter == 3{
-			tldrPlugin.SetEnable(false)
-		}
-	})
+bot.Use(wordCounterPlugin)
+bot.Use(tldrPlugin)
+bot.Use(xpPlugin)
 
-	bot.Use(wordCounterPlugin)
-	bot.Use(tldrPlugin)
-	bot.Use(xpPlugin)
-
-	var err = bot.Start()
-	if err != nil {
-		panic(err)
-	}
+var err = bot.Start()
+if err != nil {
+    panic(err)
+}
 ```

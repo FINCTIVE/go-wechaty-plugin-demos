@@ -6,7 +6,7 @@ import (
 	"log"
 )
 
-func NewXPPlugin() *wechaty.Plugin{
+func New() *wechaty.Plugin{
 	p := wechaty.NewPlugin()
 	var xp int = 0
 	p.OnMessage(func(context *wechaty.Context, message *user.Message) {

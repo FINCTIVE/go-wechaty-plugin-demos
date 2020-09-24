@@ -1,9 +1,9 @@
 package main
 
 import (
-	"plugin/tldr-plugin"
-	"plugin/word-counter-plugin"
-	"plugin/xp-plugin"
+	"./plugin/tldr-plugin"
+	"./plugin/word-counter-plugin"
+	"./plugin/xp-plugin"
 	"fmt"
 	"github.com/wechaty/go-wechaty/wechaty"
 	"github.com/wechaty/go-wechaty/wechaty-puppet/schemas"
@@ -16,9 +16,9 @@ import (
 
 func main() {
 	var bot = wechaty.NewWechaty()
-	wordCounterPlugin := word_counter_plugin.NewWordCounterPlugin()
-	tldrPlugin := tldr_plugin.NewTLDRPlugin("太长不看")
-	xpPlugin := xp_plugin.NewXPPlugin()
+	wordCounterPlugin := word_counter_plugin.New()
+	tldrPlugin := tldr_plugin.New("太长不看")
+	xpPlugin := xp_plugin.New()
 
 	var counter int = 0
 

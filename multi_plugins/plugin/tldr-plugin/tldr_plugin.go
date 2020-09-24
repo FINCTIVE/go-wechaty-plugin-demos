@@ -6,7 +6,7 @@ import (
 	"log"
 )
 
-func NewTLDRPlugin(replyMessage string) *wechaty.Plugin{
+func New(replyMessage string) *wechaty.Plugin{
 	p := wechaty.NewPlugin()
 	p.OnMessage(func(context *wechaty.Context, message *user.Message) {
 		count := context.GetData("WordCount").(int)
