@@ -1,7 +1,5 @@
 # go-wechaty 插件机制使用方式演示代码
 
-*本仓库仅用于说明展示用途，非最终代码成果。*
-
 详情请见 https://github.com/wechaty/summer-of-code/issues/9
 
 # 插件 Demo 
